@@ -1,0 +1,1716 @@
+
+AVR 1 new.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000970  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000010  00800060  00000970  00000a04  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000006  00800070  00800070  00000a14  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00000a14  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000a44  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000128  00000000  00000000  00000a80  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   0000144a  00000000  00000000  00000ba8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 000009ff  00000000  00000000  00001ff2  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000de0  00000000  00000000  000029f1  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  000001cc  00000000  00000000  000037d4  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    000004c6  00000000  00000000  000039a0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00000a12  00000000  00000000  00003e66  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 000000c8  00000000  00000000  00004878  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   8:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  10:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  14:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  18:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  1c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  20:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  24:	0c 94 a6 03 	jmp	0x74c	; 0x74c <__vector_9>
+  28:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  2c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  30:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  34:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  38:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  3c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  40:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  44:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  48:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  4c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  50:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+  60:	10 e0       	ldi	r17, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	e0 e7       	ldi	r30, 0x70	; 112
+  68:	f9 e0       	ldi	r31, 0x09	; 9
+  6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+  6c:	05 90       	lpm	r0, Z+
+  6e:	0d 92       	st	X+, r0
+  70:	a0 37       	cpi	r26, 0x70	; 112
+  72:	b1 07       	cpc	r27, r17
+  74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+
+00000076 <__do_clear_bss>:
+  76:	20 e0       	ldi	r18, 0x00	; 0
+  78:	a0 e7       	ldi	r26, 0x70	; 112
+  7a:	b0 e0       	ldi	r27, 0x00	; 0
+  7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
+
+0000007e <.do_clear_bss_loop>:
+  7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+  80:	a6 37       	cpi	r26, 0x76	; 118
+  82:	b2 07       	cpc	r27, r18
+  84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
+  86:	0e 94 1b 01 	call	0x236	; 0x236 <main>
+  8a:	0c 94 b6 04 	jmp	0x96c	; 0x96c <_exit>
+
+0000008e <__bad_interrupt>:
+  8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000092 <keySearch>:
+
+#include "Keypad.h"
+
+//This Function Returns the Character Entered through the KeyPad
+char keySearch()
+{
+  92:	cf 93       	push	r28
+  94:	df 93       	push	r29
+  96:	cd b7       	in	r28, 0x3d	; 61
+  98:	de b7       	in	r29, 0x3e	; 62
+  9a:	60 97       	sbiw	r28, 0x10	; 16
+  9c:	0f b6       	in	r0, 0x3f	; 63
+  9e:	f8 94       	cli
+  a0:	de bf       	out	0x3e, r29	; 62
+  a2:	0f be       	out	0x3f, r0	; 63
+  a4:	cd bf       	out	0x3d, r28	; 61
+	unsigned char key_pad[4][4] = {	{'7','4','1','.'},
+  a6:	80 e1       	ldi	r24, 0x10	; 16
+  a8:	e0 e6       	ldi	r30, 0x60	; 96
+  aa:	f0 e0       	ldi	r31, 0x00	; 0
+  ac:	de 01       	movw	r26, r28
+  ae:	11 96       	adiw	r26, 0x01	; 1
+  b0:	01 90       	ld	r0, Z+
+  b2:	0d 92       	st	X+, r0
+  b4:	8a 95       	dec	r24
+  b6:	e1 f7       	brne	.-8      	; 0xb0 <keySearch+0x1e>
+	unsigned char colloc, rowloc;
+	
+	while(1)
+	{
+		
+		KEY_DDR1 &=!(1<<PA3) ;           /* set port direction as input-output */
+  b8:	8a b3       	in	r24, 0x1a	; 26
+  ba:	1a ba       	out	0x1a, r1	; 26
+		KEY_PRT1 |=(1<<PA3);
+  bc:	8b b3       	in	r24, 0x1b	; 27
+  be:	88 60       	ori	r24, 0x08	; 8
+  c0:	8b bb       	out	0x1b, r24	; 27
+		KEY_DDR2 = 0xF0;           /* set port direction as input-output */
+  c2:	80 ef       	ldi	r24, 0xF0	; 240
+  c4:	87 bb       	out	0x17, r24	; 23
+		KEY_PRT2 = 0xF7;
+  c6:	87 ef       	ldi	r24, 0xF7	; 247
+  c8:	88 bb       	out	0x18, r24	; 24
+
+		do
+		{
+			KEY_PRT1 &= 0x08;		//ground all rows of keyboard at once
+  ca:	8b b3       	in	r24, 0x1b	; 27
+  cc:	88 70       	andi	r24, 0x08	; 8
+  ce:	8b bb       	out	0x1b, r24	; 27
+			KEY_PRT2 &= 0x07;
+  d0:	88 b3       	in	r24, 0x18	; 24
+  d2:	87 70       	andi	r24, 0x07	; 7
+  d4:	88 bb       	out	0x18, r24	; 24
+			colloc = ((KEY_PIN1|KEY_PIN2) & 0x0F); /* read status of column */
+  d6:	99 b3       	in	r25, 0x19	; 25
+  d8:	86 b3       	in	r24, 0x16	; 22
+  da:	89 2b       	or	r24, r25
+  dc:	8f 70       	andi	r24, 0x0F	; 15
+		}while(colloc !=0x0F);			//keep checking until all keys released
+  de:	8f 30       	cpi	r24, 0x0F	; 15
+  e0:	a1 f7       	brne	.-24     	; 0xca <keySearch+0x38>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  e2:	2f ef       	ldi	r18, 0xFF	; 255
+  e4:	89 ef       	ldi	r24, 0xF9	; 249
+  e6:	90 e0       	ldi	r25, 0x00	; 0
+  e8:	21 50       	subi	r18, 0x01	; 1
+  ea:	80 40       	sbci	r24, 0x00	; 0
+  ec:	90 40       	sbci	r25, 0x00	; 0
+  ee:	e1 f7       	brne	.-8      	; 0xe8 <keySearch+0x56>
+  f0:	00 c0       	rjmp	.+0      	; 0xf2 <keySearch+0x60>
+  f2:	00 00       	nop
+		do
+		{
+			do
+			{
+				_delay_ms(20);					/* 20ms key debounce time */
+				colloc =((KEY_PIN1|KEY_PIN2) & 0x0F);		 // check if any key is pressed
+  f4:	99 b3       	in	r25, 0x19	; 25
+  f6:	86 b3       	in	r24, 0x16	; 22
+  f8:	89 2b       	or	r24, r25
+  fa:	8f 70       	andi	r24, 0x0F	; 15
+			}while(colloc ==0x0F);			 //continuous checking for key press
+  fc:	8f 30       	cpi	r24, 0x0F	; 15
+  fe:	89 f3       	breq	.-30     	; 0xe2 <keySearch+0x50>
+ 100:	2f ef       	ldi	r18, 0xFF	; 255
+ 102:	83 ef       	ldi	r24, 0xF3	; 243
+ 104:	91 e0       	ldi	r25, 0x01	; 1
+ 106:	21 50       	subi	r18, 0x01	; 1
+ 108:	80 40       	sbci	r24, 0x00	; 0
+ 10a:	90 40       	sbci	r25, 0x00	; 0
+ 10c:	e1 f7       	brne	.-8      	; 0x106 <keySearch+0x74>
+ 10e:	00 c0       	rjmp	.+0      	; 0x110 <keySearch+0x7e>
+ 110:	00 00       	nop
+			
+			_delay_ms (40);				 /* 40 ms key debounce time */
+			colloc = ((KEY_PIN1|KEY_PIN2) & 0x0F);		//read the columns
+ 112:	99 b3       	in	r25, 0x19	; 25
+ 114:	86 b3       	in	r24, 0x16	; 22
+ 116:	89 2b       	or	r24, r25
+ 118:	8f 70       	andi	r24, 0x0F	; 15
+		}while(colloc ==0x0F);				// wait for the key press
+ 11a:	8f 30       	cpi	r24, 0x0F	; 15
+ 11c:	11 f3       	breq	.-60     	; 0xe2 <keySearch+0x50>
+
+
+		/* now check for rows */
+		KEY_PRT1 = 0x08;					//ground row 0 of keyboard
+ 11e:	88 e0       	ldi	r24, 0x08	; 8
+ 120:	8b bb       	out	0x1b, r24	; 27
+		KEY_PRT2 = 0xE7;
+ 122:	87 ee       	ldi	r24, 0xE7	; 231
+ 124:	88 bb       	out	0x18, r24	; 24
+		colloc = ((KEY_PIN1|KEY_PIN2) & 0x0F);			//read  a columns		(KEY_PIN1 & 0x40)&&(KEY_PIN2 & 0x67)
+ 126:	99 b3       	in	r25, 0x19	; 25
+ 128:	86 b3       	in	r24, 0x16	; 22
+ 12a:	89 2b       	or	r24, r25
+ 12c:	8f 70       	andi	r24, 0x0F	; 15
+		if(colloc !=0x0F)					//column is detected
+ 12e:	8f 30       	cpi	r24, 0x0F	; 15
+ 130:	09 f5       	brne	.+66     	; 0x174 <keySearch+0xe2>
+		{
+			rowloc = 0;						 //save the row location
+			break;							//exit while loop
+		}
+
+		KEY_PRT1 = 0x08;				/* check for pressed key in 2nd row */
+ 132:	88 e0       	ldi	r24, 0x08	; 8
+ 134:	8b bb       	out	0x1b, r24	; 27
+		KEY_PRT2 = 0xD7;
+ 136:	87 ed       	ldi	r24, 0xD7	; 215
+ 138:	88 bb       	out	0x18, r24	; 24
+		colloc = ((KEY_PIN1|KEY_PIN2) & 0x0F);
+ 13a:	99 b3       	in	r25, 0x19	; 25
+ 13c:	86 b3       	in	r24, 0x16	; 22
+ 13e:	89 2b       	or	r24, r25
+ 140:	8f 70       	andi	r24, 0x0F	; 15
+		if(colloc !=0x0F)
+ 142:	8f 30       	cpi	r24, 0x0F	; 15
+ 144:	c9 f4       	brne	.+50     	; 0x178 <keySearch+0xe6>
+		{
+			rowloc = 1;
+			break;
+		}
+		
+		KEY_PRT1 = 0x08;				/* check for pressed key in 3rd row */
+ 146:	88 e0       	ldi	r24, 0x08	; 8
+ 148:	8b bb       	out	0x1b, r24	; 27
+		KEY_PRT2 = 0xB7;
+ 14a:	87 eb       	ldi	r24, 0xB7	; 183
+ 14c:	88 bb       	out	0x18, r24	; 24
+		colloc = ((KEY_PIN1|KEY_PIN2) & 0x0F);
+ 14e:	99 b3       	in	r25, 0x19	; 25
+ 150:	86 b3       	in	r24, 0x16	; 22
+ 152:	89 2b       	or	r24, r25
+ 154:	8f 70       	andi	r24, 0x0F	; 15
+		if(colloc !=0x0F)
+ 156:	8f 30       	cpi	r24, 0x0F	; 15
+ 158:	89 f4       	brne	.+34     	; 0x17c <keySearch+0xea>
+		{
+			rowloc = 2;
+			break;
+		}
+
+		KEY_PRT1 = 0x08;				/* check for pressed key in 4th row */
+ 15a:	88 e0       	ldi	r24, 0x08	; 8
+ 15c:	8b bb       	out	0x1b, r24	; 27
+		KEY_PRT2 = 0x77;
+ 15e:	87 e7       	ldi	r24, 0x77	; 119
+ 160:	88 bb       	out	0x18, r24	; 24
+		colloc =  ((KEY_PIN1|KEY_PIN2) & 0x0F);
+ 162:	99 b3       	in	r25, 0x19	; 25
+ 164:	86 b3       	in	r24, 0x16	; 22
+ 166:	89 2b       	or	r24, r25
+ 168:	8f 70       	andi	r24, 0x0F	; 15
+		if(colloc !=0x0F)
+ 16a:	8f 30       	cpi	r24, 0x0F	; 15
+ 16c:	09 f4       	brne	.+2      	; 0x170 <keySearch+0xde>
+ 16e:	a4 cf       	rjmp	.-184    	; 0xb8 <keySearch+0x26>
+		{
+			rowloc = 3;
+ 170:	e3 e0       	ldi	r30, 0x03	; 3
+ 172:	05 c0       	rjmp	.+10     	; 0x17e <keySearch+0xec>
+		KEY_PRT1 = 0x08;					//ground row 0 of keyboard
+		KEY_PRT2 = 0xE7;
+		colloc = ((KEY_PIN1|KEY_PIN2) & 0x0F);			//read  a columns		(KEY_PIN1 & 0x40)&&(KEY_PIN2 & 0x67)
+		if(colloc !=0x0F)					//column is detected
+		{
+			rowloc = 0;						 //save the row location
+ 174:	e0 e0       	ldi	r30, 0x00	; 0
+ 176:	03 c0       	rjmp	.+6      	; 0x17e <keySearch+0xec>
+		KEY_PRT1 = 0x08;				/* check for pressed key in 2nd row */
+		KEY_PRT2 = 0xD7;
+		colloc = ((KEY_PIN1|KEY_PIN2) & 0x0F);
+		if(colloc !=0x0F)
+		{
+			rowloc = 1;
+ 178:	e1 e0       	ldi	r30, 0x01	; 1
+ 17a:	01 c0       	rjmp	.+2      	; 0x17e <keySearch+0xec>
+		KEY_PRT1 = 0x08;				/* check for pressed key in 3rd row */
+		KEY_PRT2 = 0xB7;
+		colloc = ((KEY_PIN1|KEY_PIN2) & 0x0F);
+		if(colloc !=0x0F)
+		{
+			rowloc = 2;
+ 17c:	e2 e0       	ldi	r30, 0x02	; 2
+			rowloc = 3;
+			break;
+		}
+	}
+	//check the column and send its result to Port A
+	if(colloc == 0x0E)
+ 17e:	8e 30       	cpi	r24, 0x0E	; 14
+ 180:	69 f4       	brne	.+26     	; 0x19c <keySearch+0x10a>
+	return(key_pad[rowloc][0]);
+ 182:	f0 e0       	ldi	r31, 0x00	; 0
+ 184:	ee 0f       	add	r30, r30
+ 186:	ff 1f       	adc	r31, r31
+ 188:	ee 0f       	add	r30, r30
+ 18a:	ff 1f       	adc	r31, r31
+ 18c:	81 e0       	ldi	r24, 0x01	; 1
+ 18e:	90 e0       	ldi	r25, 0x00	; 0
+ 190:	8c 0f       	add	r24, r28
+ 192:	9d 1f       	adc	r25, r29
+ 194:	e8 0f       	add	r30, r24
+ 196:	f9 1f       	adc	r31, r25
+ 198:	80 81       	ld	r24, Z
+ 19a:	2a c0       	rjmp	.+84     	; 0x1f0 <keySearch+0x15e>
+	else if(colloc == 0x0D)
+ 19c:	8d 30       	cpi	r24, 0x0D	; 13
+ 19e:	69 f4       	brne	.+26     	; 0x1ba <keySearch+0x128>
+	return(key_pad[rowloc][1]);
+ 1a0:	f0 e0       	ldi	r31, 0x00	; 0
+ 1a2:	ee 0f       	add	r30, r30
+ 1a4:	ff 1f       	adc	r31, r31
+ 1a6:	ee 0f       	add	r30, r30
+ 1a8:	ff 1f       	adc	r31, r31
+ 1aa:	81 e0       	ldi	r24, 0x01	; 1
+ 1ac:	90 e0       	ldi	r25, 0x00	; 0
+ 1ae:	8c 0f       	add	r24, r28
+ 1b0:	9d 1f       	adc	r25, r29
+ 1b2:	e8 0f       	add	r30, r24
+ 1b4:	f9 1f       	adc	r31, r25
+ 1b6:	81 81       	ldd	r24, Z+1	; 0x01
+ 1b8:	1b c0       	rjmp	.+54     	; 0x1f0 <keySearch+0x15e>
+	else if(colloc == 0x0B)
+ 1ba:	8b 30       	cpi	r24, 0x0B	; 11
+ 1bc:	69 f4       	brne	.+26     	; 0x1d8 <keySearch+0x146>
+	return(key_pad[rowloc][2]);
+ 1be:	f0 e0       	ldi	r31, 0x00	; 0
+ 1c0:	ee 0f       	add	r30, r30
+ 1c2:	ff 1f       	adc	r31, r31
+ 1c4:	ee 0f       	add	r30, r30
+ 1c6:	ff 1f       	adc	r31, r31
+ 1c8:	81 e0       	ldi	r24, 0x01	; 1
+ 1ca:	90 e0       	ldi	r25, 0x00	; 0
+ 1cc:	8c 0f       	add	r24, r28
+ 1ce:	9d 1f       	adc	r25, r29
+ 1d0:	e8 0f       	add	r30, r24
+ 1d2:	f9 1f       	adc	r31, r25
+ 1d4:	82 81       	ldd	r24, Z+2	; 0x02
+ 1d6:	0c c0       	rjmp	.+24     	; 0x1f0 <keySearch+0x15e>
+	else
+	return(key_pad[rowloc][3]);
+ 1d8:	f0 e0       	ldi	r31, 0x00	; 0
+ 1da:	ee 0f       	add	r30, r30
+ 1dc:	ff 1f       	adc	r31, r31
+ 1de:	ee 0f       	add	r30, r30
+ 1e0:	ff 1f       	adc	r31, r31
+ 1e2:	81 e0       	ldi	r24, 0x01	; 1
+ 1e4:	90 e0       	ldi	r25, 0x00	; 0
+ 1e6:	8c 0f       	add	r24, r28
+ 1e8:	9d 1f       	adc	r25, r29
+ 1ea:	e8 0f       	add	r30, r24
+ 1ec:	f9 1f       	adc	r31, r25
+ 1ee:	83 81       	ldd	r24, Z+3	; 0x03
+}
+ 1f0:	60 96       	adiw	r28, 0x10	; 16
+ 1f2:	0f b6       	in	r0, 0x3f	; 63
+ 1f4:	f8 94       	cli
+ 1f6:	de bf       	out	0x3e, r29	; 62
+ 1f8:	0f be       	out	0x3f, r0	; 63
+ 1fa:	cd bf       	out	0x3d, r28	; 61
+ 1fc:	df 91       	pop	r29
+ 1fe:	cf 91       	pop	r28
+ 200:	08 95       	ret
+
+00000202 <height_adjust>:
+		
+		
+	}
+void height_adjust(){
+	
+	     int dist=ultrasonic();
+ 202:	0e 94 bd 03 	call	0x77a	; 0x77a <ultrasonic>
+		if(dist>90){
+ 206:	8b 35       	cpi	r24, 0x5B	; 91
+ 208:	91 05       	cpc	r25, r1
+ 20a:	2c f4       	brge	.+10     	; 0x216 <height_adjust+0x14>
+ 20c:	08 c0       	rjmp	.+16     	; 0x21e <height_adjust+0x1c>
+			while(dist>90){
+				stepper_motor_clockwise();
+ 20e:	0e 94 38 03 	call	0x670	; 0x670 <stepper_motor_clockwise>
+					     dist=ultrasonic();
+ 212:	0e 94 bd 03 	call	0x77a	; 0x77a <ultrasonic>
+	}
+void height_adjust(){
+	
+	     int dist=ultrasonic();
+		if(dist>90){
+			while(dist>90){
+ 216:	8b 35       	cpi	r24, 0x5B	; 91
+ 218:	91 05       	cpc	r25, r1
+ 21a:	cc f7       	brge	.-14     	; 0x20e <height_adjust+0xc>
+ 21c:	08 95       	ret
+						
+
+			}
+			
+		}
+		else if(dist<90){
+ 21e:	8a 35       	cpi	r24, 0x5A	; 90
+ 220:	91 05       	cpc	r25, r1
+ 222:	2c f0       	brlt	.+10     	; 0x22e <height_adjust+0x2c>
+ 224:	08 95       	ret
+			while(dist<90){
+				 stepper_motor_anticlockwise();
+ 226:	0e 94 6f 03 	call	0x6de	; 0x6de <stepper_motor_anticlockwise>
+				 	     dist=ultrasonic();
+ 22a:	0e 94 bd 03 	call	0x77a	; 0x77a <ultrasonic>
+
+			}
+			
+		}
+		else if(dist<90){
+			while(dist<90){
+ 22e:	8a 35       	cpi	r24, 0x5A	; 90
+ 230:	91 05       	cpc	r25, r1
+ 232:	cc f3       	brlt	.-14     	; 0x226 <height_adjust+0x24>
+ 234:	08 95       	ret
+
+00000236 <main>:
+	#include "piezo.h"
+	int main(void)
+	{   
+		
+		
+		DDRD = 0xBF; //Makes RD4,RD5 and RD7 output pins/* Make PORTD lower pins as output */
+ 236:	8f eb       	ldi	r24, 0xBF	; 191
+ 238:	81 bb       	out	0x11, r24	; 17
+		PORTD = 0x00;
+ 23a:	12 ba       	out	0x12, r1	; 18
+		
+		/* Make PORTD lower pins as output */
+				/* Set period in between two steps */
+		DDRC=0xFF;
+ 23c:	8f ef       	ldi	r24, 0xFF	; 255
+ 23e:	84 bb       	out	0x14, r24	; 20
+	    DDRA |= (1<<PA0);		/* Make trigger pin as output */
+ 240:	8a b3       	in	r24, 0x1a	; 26
+ 242:	81 60       	ori	r24, 0x01	; 1
+ 244:	8a bb       	out	0x1a, r24	; 26
+/*
+		PORTD = 0xFF;		/ * Turn on Pull-up * /
+*/
+		height_adjust();
+ 246:	0e 94 01 01 	call	0x202	; 0x202 <height_adjust>
+				char x='?';
+
+		while(1){
+		 x=keySearch();
+ 24a:	0e 94 49 00 	call	0x92	; 0x92 <keySearch>
+		 if(x!='?'){break;}
+ 24e:	8f 33       	cpi	r24, 0x3F	; 63
+ 250:	e1 f3       	breq	.-8      	; 0x24a <main+0x14>
+		}
+		//REALTIME COMBINATIONS
+		switch(x)
+ 252:	84 33       	cpi	r24, 0x34	; 52
+ 254:	f1 f0       	breq	.+60     	; 0x292 <main+0x5c>
+ 256:	87 33       	cpi	r24, 0x37	; 55
+ 258:	69 f0       	breq	.+26     	; 0x274 <main+0x3e>
+ 25a:	81 33       	cpi	r24, 0x31	; 49
+ 25c:	49 f5       	brne	.+82     	; 0x2b0 <main+0x7a>
+		{
+			case '1':
+			while(1){
+			piezo1();
+ 25e:	0e 94 6f 01 	call	0x2de	; 0x2de <piezo1>
+			piezo2();
+ 262:	0e 94 a6 01 	call	0x34c	; 0x34c <piezo2>
+			left_horizontal_arm();
+ 266:	0e 94 b9 02 	call	0x572	; 0x572 <left_horizontal_arm>
+			piezo4();
+ 26a:	0e 94 14 02 	call	0x428	; 0x428 <piezo4>
+			right_horizontal_arm();
+ 26e:	0e 94 e6 02 	call	0x5cc	; 0x5cc <right_horizontal_arm>
+ 272:	f5 cf       	rjmp	.-22     	; 0x25e <main+0x28>
+			}
+			
+			case '7':
+			while(1){
+				    piezo3();
+ 274:	0e 94 dd 01 	call	0x3ba	; 0x3ba <piezo3>
+					piezo4();
+ 278:	0e 94 14 02 	call	0x428	; 0x428 <piezo4>
+					lft_vertical_arm();
+ 27c:	0e 94 0f 03 	call	0x61e	; 0x61e <lft_vertical_arm>
+					piezo6();
+ 280:	0e 94 82 02 	call	0x504	; 0x504 <piezo6>
+					piezo3();
+ 284:	0e 94 dd 01 	call	0x3ba	; 0x3ba <piezo3>
+					right_horizontal_arm();
+ 288:	0e 94 e6 02 	call	0x5cc	; 0x5cc <right_horizontal_arm>
+					piezo6();
+ 28c:	0e 94 82 02 	call	0x504	; 0x504 <piezo6>
+ 290:	f1 cf       	rjmp	.-30     	; 0x274 <main+0x3e>
+				
+				
+			}
+			case '4':
+			while(1){
+				piezo5();
+ 292:	0e 94 4b 02 	call	0x496	; 0x496 <piezo5>
+				piezo6();
+ 296:	0e 94 82 02 	call	0x504	; 0x504 <piezo6>
+				piezo3();
+ 29a:	0e 94 dd 01 	call	0x3ba	; 0x3ba <piezo3>
+				right_horizontal_arm();
+ 29e:	0e 94 e6 02 	call	0x5cc	; 0x5cc <right_horizontal_arm>
+				piezo3();
+ 2a2:	0e 94 dd 01 	call	0x3ba	; 0x3ba <piezo3>
+				piezo6();
+ 2a6:	0e 94 82 02 	call	0x504	; 0x504 <piezo6>
+				piezo4();
+ 2aa:	0e 94 14 02 	call	0x428	; 0x428 <piezo4>
+ 2ae:	f1 cf       	rjmp	.-30     	; 0x292 <main+0x5c>
+	
+		
+		
+		
+		
+	}
+ 2b0:	80 e0       	ldi	r24, 0x00	; 0
+ 2b2:	90 e0       	ldi	r25, 0x00	; 0
+ 2b4:	08 95       	ret
+
+000002b6 <piezo_init>:
+
+
+void piezo_init()
+{
+	// AREF = AVcc
+	ADMUX = (1<<REFS0);
+ 2b6:	80 e4       	ldi	r24, 0x40	; 64
+ 2b8:	87 b9       	out	0x07, r24	; 7
+
+	// ADC Enable and prescaler of 64
+	// 8000000/64 = 125000
+	ADCSRA = (1<<ADEN)|(1<<ADPS2)|(1<<ADPS1)|(1<<ADPS0);
+ 2ba:	87 e8       	ldi	r24, 0x87	; 135
+ 2bc:	86 b9       	out	0x06, r24	; 6
+ 2be:	08 95       	ret
+
+000002c0 <piezo_read>:
+}
+
+uint16_t piezo_read(unsigned char ch)
+{   
+	//Select ADC Channel ch must be 0-7
+	ch=ch&0b00000111;
+ 2c0:	87 70       	andi	r24, 0x07	; 7
+	ADMUX|=ch;
+ 2c2:	97 b1       	in	r25, 0x07	; 7
+ 2c4:	89 2b       	or	r24, r25
+ 2c6:	87 b9       	out	0x07, r24	; 7
+
+	//Start Single conversion
+	ADCSRA|=(1<<ADSC);
+ 2c8:	86 b1       	in	r24, 0x06	; 6
+ 2ca:	80 64       	ori	r24, 0x40	; 64
+ 2cc:	86 b9       	out	0x06, r24	; 6
+
+	//Wait for conversion to complete
+	while(!(ADCSRA & (1<<ADIF)));
+ 2ce:	34 9b       	sbis	0x06, 4	; 6
+ 2d0:	fe cf       	rjmp	.-4      	; 0x2ce <piezo_read+0xe>
+	//Clear ADIF by writing one to it
+	//Note you may be wondering why we have write one to clear it
+	//This is standard way of clearing bits in io as said in datasheets.
+	//The code writes '1' but it result in setting bit to '0' !!!
+
+	ADCSRA|=(1<<ADIF);
+ 2d2:	86 b1       	in	r24, 0x06	; 6
+ 2d4:	80 61       	ori	r24, 0x10	; 16
+ 2d6:	86 b9       	out	0x06, r24	; 6
+	
+
+	return(ADC);
+ 2d8:	84 b1       	in	r24, 0x04	; 4
+ 2da:	95 b1       	in	r25, 0x05	; 5
+}
+ 2dc:	08 95       	ret
+
+000002de <piezo1>:
+
+void piezo1()
+{   DDRC|=(1<<PC5);
+ 2de:	84 b3       	in	r24, 0x14	; 20
+ 2e0:	80 62       	ori	r24, 0x20	; 32
+ 2e2:	84 bb       	out	0x14, r24	; 20
+	piezo_init();
+ 2e4:	0e 94 5b 01 	call	0x2b6	; 0x2b6 <piezo_init>
+	 piezoValue;
+ 2e8:	80 91 70 00 	lds	r24, 0x0070	; 0x800070 <__data_end>
+ 2ec:	90 91 71 00 	lds	r25, 0x0071	; 0x800071 <__data_end+0x1>
+ 2f0:	a0 91 72 00 	lds	r26, 0x0072	; 0x800072 <__data_end+0x2>
+ 2f4:	b0 91 73 00 	lds	r27, 0x0073	; 0x800073 <__data_end+0x3>
+	/* Replace with your application code */
+	PORTC|=(1<<PC5);
+ 2f8:	85 b3       	in	r24, 0x15	; 21
+ 2fa:	80 62       	ori	r24, 0x20	; 32
+ 2fc:	85 bb       	out	0x15, r24	; 21
+
+	while (1)
+	{
+		piezoValue = piezo_read(2);
+ 2fe:	82 e0       	ldi	r24, 0x02	; 2
+ 300:	0e 94 60 01 	call	0x2c0	; 0x2c0 <piezo_read>
+ 304:	bc 01       	movw	r22, r24
+ 306:	80 e0       	ldi	r24, 0x00	; 0
+ 308:	90 e0       	ldi	r25, 0x00	; 0
+ 30a:	0e 94 f9 03 	call	0x7f2	; 0x7f2 <__floatunsisf>
+ 30e:	60 93 70 00 	sts	0x0070, r22	; 0x800070 <__data_end>
+ 312:	70 93 71 00 	sts	0x0071, r23	; 0x800071 <__data_end+0x1>
+ 316:	80 93 72 00 	sts	0x0072, r24	; 0x800072 <__data_end+0x2>
+ 31a:	90 93 73 00 	sts	0x0073, r25	; 0x800073 <__data_end+0x3>
+		if (piezoValue>0)
+ 31e:	60 91 70 00 	lds	r22, 0x0070	; 0x800070 <__data_end>
+ 322:	70 91 71 00 	lds	r23, 0x0071	; 0x800071 <__data_end+0x1>
+ 326:	80 91 72 00 	lds	r24, 0x0072	; 0x800072 <__data_end+0x2>
+ 32a:	90 91 73 00 	lds	r25, 0x0073	; 0x800073 <__data_end+0x3>
+ 32e:	20 e0       	ldi	r18, 0x00	; 0
+ 330:	30 e0       	ldi	r19, 0x00	; 0
+ 332:	a9 01       	movw	r20, r18
+ 334:	0e 94 36 04 	call	0x86c	; 0x86c <__gesf2>
+ 338:	18 16       	cp	r1, r24
+ 33a:	24 f4       	brge	.+8      	; 0x344 <piezo1+0x66>
+		{
+			PORTC&=~(1<<PC5);
+ 33c:	85 b3       	in	r24, 0x15	; 21
+ 33e:	8f 7d       	andi	r24, 0xDF	; 223
+ 340:	85 bb       	out	0x15, r24	; 21
+			break;
+			}else{
+			PORTC|=(1<<PC5);
+		}
+	}
+}
+ 342:	08 95       	ret
+		if (piezoValue>0)
+		{
+			PORTC&=~(1<<PC5);
+			break;
+			}else{
+			PORTC|=(1<<PC5);
+ 344:	85 b3       	in	r24, 0x15	; 21
+ 346:	80 62       	ori	r24, 0x20	; 32
+ 348:	85 bb       	out	0x15, r24	; 21
+		}
+	}
+ 34a:	d9 cf       	rjmp	.-78     	; 0x2fe <piezo1+0x20>
+
+0000034c <piezo2>:
+}
+void piezo2()
+{   DDRC|=(1<<PC6);
+ 34c:	84 b3       	in	r24, 0x14	; 20
+ 34e:	80 64       	ori	r24, 0x40	; 64
+ 350:	84 bb       	out	0x14, r24	; 20
+	piezo_init();
+ 352:	0e 94 5b 01 	call	0x2b6	; 0x2b6 <piezo_init>
+	 piezoValue;
+ 356:	80 91 70 00 	lds	r24, 0x0070	; 0x800070 <__data_end>
+ 35a:	90 91 71 00 	lds	r25, 0x0071	; 0x800071 <__data_end+0x1>
+ 35e:	a0 91 72 00 	lds	r26, 0x0072	; 0x800072 <__data_end+0x2>
+ 362:	b0 91 73 00 	lds	r27, 0x0073	; 0x800073 <__data_end+0x3>
+	/* Replace with your application code */
+	PORTC|=(1<<PC6);
+ 366:	85 b3       	in	r24, 0x15	; 21
+ 368:	80 64       	ori	r24, 0x40	; 64
+ 36a:	85 bb       	out	0x15, r24	; 21
+
+	while (1)
+	{
+		piezoValue = piezo_read(1);
+ 36c:	81 e0       	ldi	r24, 0x01	; 1
+ 36e:	0e 94 60 01 	call	0x2c0	; 0x2c0 <piezo_read>
+ 372:	bc 01       	movw	r22, r24
+ 374:	80 e0       	ldi	r24, 0x00	; 0
+ 376:	90 e0       	ldi	r25, 0x00	; 0
+ 378:	0e 94 f9 03 	call	0x7f2	; 0x7f2 <__floatunsisf>
+ 37c:	60 93 70 00 	sts	0x0070, r22	; 0x800070 <__data_end>
+ 380:	70 93 71 00 	sts	0x0071, r23	; 0x800071 <__data_end+0x1>
+ 384:	80 93 72 00 	sts	0x0072, r24	; 0x800072 <__data_end+0x2>
+ 388:	90 93 73 00 	sts	0x0073, r25	; 0x800073 <__data_end+0x3>
+		if (piezoValue>0)
+ 38c:	60 91 70 00 	lds	r22, 0x0070	; 0x800070 <__data_end>
+ 390:	70 91 71 00 	lds	r23, 0x0071	; 0x800071 <__data_end+0x1>
+ 394:	80 91 72 00 	lds	r24, 0x0072	; 0x800072 <__data_end+0x2>
+ 398:	90 91 73 00 	lds	r25, 0x0073	; 0x800073 <__data_end+0x3>
+ 39c:	20 e0       	ldi	r18, 0x00	; 0
+ 39e:	30 e0       	ldi	r19, 0x00	; 0
+ 3a0:	a9 01       	movw	r20, r18
+ 3a2:	0e 94 36 04 	call	0x86c	; 0x86c <__gesf2>
+ 3a6:	18 16       	cp	r1, r24
+ 3a8:	24 f4       	brge	.+8      	; 0x3b2 <piezo2+0x66>
+		{
+			PORTC&=~(1<<PC6);
+ 3aa:	85 b3       	in	r24, 0x15	; 21
+ 3ac:	8f 7b       	andi	r24, 0xBF	; 191
+ 3ae:	85 bb       	out	0x15, r24	; 21
+			break;
+			}else{
+			PORTC|=(1<<PC6);
+		}
+	}
+}
+ 3b0:	08 95       	ret
+		if (piezoValue>0)
+		{
+			PORTC&=~(1<<PC6);
+			break;
+			}else{
+			PORTC|=(1<<PC6);
+ 3b2:	85 b3       	in	r24, 0x15	; 21
+ 3b4:	80 64       	ori	r24, 0x40	; 64
+ 3b6:	85 bb       	out	0x15, r24	; 21
+		}
+	}
+ 3b8:	d9 cf       	rjmp	.-78     	; 0x36c <piezo2+0x20>
+
+000003ba <piezo3>:
+}
+void piezo3()
+{   DDRC|=(1<<PC7);
+ 3ba:	84 b3       	in	r24, 0x14	; 20
+ 3bc:	80 68       	ori	r24, 0x80	; 128
+ 3be:	84 bb       	out	0x14, r24	; 20
+	piezo_init();
+ 3c0:	0e 94 5b 01 	call	0x2b6	; 0x2b6 <piezo_init>
+	 piezoValue;
+ 3c4:	80 91 70 00 	lds	r24, 0x0070	; 0x800070 <__data_end>
+ 3c8:	90 91 71 00 	lds	r25, 0x0071	; 0x800071 <__data_end+0x1>
+ 3cc:	a0 91 72 00 	lds	r26, 0x0072	; 0x800072 <__data_end+0x2>
+ 3d0:	b0 91 73 00 	lds	r27, 0x0073	; 0x800073 <__data_end+0x3>
+	/* Replace with your application code */
+	PORTC|=(1<<PC7);
+ 3d4:	85 b3       	in	r24, 0x15	; 21
+ 3d6:	80 68       	ori	r24, 0x80	; 128
+ 3d8:	85 bb       	out	0x15, r24	; 21
+
+	while (1)
+	{
+		piezoValue = piezo_read(4);
+ 3da:	84 e0       	ldi	r24, 0x04	; 4
+ 3dc:	0e 94 60 01 	call	0x2c0	; 0x2c0 <piezo_read>
+ 3e0:	bc 01       	movw	r22, r24
+ 3e2:	80 e0       	ldi	r24, 0x00	; 0
+ 3e4:	90 e0       	ldi	r25, 0x00	; 0
+ 3e6:	0e 94 f9 03 	call	0x7f2	; 0x7f2 <__floatunsisf>
+ 3ea:	60 93 70 00 	sts	0x0070, r22	; 0x800070 <__data_end>
+ 3ee:	70 93 71 00 	sts	0x0071, r23	; 0x800071 <__data_end+0x1>
+ 3f2:	80 93 72 00 	sts	0x0072, r24	; 0x800072 <__data_end+0x2>
+ 3f6:	90 93 73 00 	sts	0x0073, r25	; 0x800073 <__data_end+0x3>
+		if (piezoValue>0)
+ 3fa:	60 91 70 00 	lds	r22, 0x0070	; 0x800070 <__data_end>
+ 3fe:	70 91 71 00 	lds	r23, 0x0071	; 0x800071 <__data_end+0x1>
+ 402:	80 91 72 00 	lds	r24, 0x0072	; 0x800072 <__data_end+0x2>
+ 406:	90 91 73 00 	lds	r25, 0x0073	; 0x800073 <__data_end+0x3>
+ 40a:	20 e0       	ldi	r18, 0x00	; 0
+ 40c:	30 e0       	ldi	r19, 0x00	; 0
+ 40e:	a9 01       	movw	r20, r18
+ 410:	0e 94 36 04 	call	0x86c	; 0x86c <__gesf2>
+ 414:	18 16       	cp	r1, r24
+ 416:	24 f4       	brge	.+8      	; 0x420 <__EEPROM_REGION_LENGTH__+0x20>
+		{
+			PORTC&=~(1<<PC7);
+ 418:	85 b3       	in	r24, 0x15	; 21
+ 41a:	8f 77       	andi	r24, 0x7F	; 127
+ 41c:	85 bb       	out	0x15, r24	; 21
+			break;
+			}else{
+			PORTC|=(1<<PC7);
+		}
+	}
+}
+ 41e:	08 95       	ret
+		if (piezoValue>0)
+		{
+			PORTC&=~(1<<PC7);
+			break;
+			}else{
+			PORTC|=(1<<PC7);
+ 420:	85 b3       	in	r24, 0x15	; 21
+ 422:	80 68       	ori	r24, 0x80	; 128
+ 424:	85 bb       	out	0x15, r24	; 21
+		}
+	}
+ 426:	d9 cf       	rjmp	.-78     	; 0x3da <piezo3+0x20>
+
+00000428 <piezo4>:
+}
+void piezo4()
+{   DDRD|=(1<<PD0);
+ 428:	81 b3       	in	r24, 0x11	; 17
+ 42a:	81 60       	ori	r24, 0x01	; 1
+ 42c:	81 bb       	out	0x11, r24	; 17
+	piezo_init();
+ 42e:	0e 94 5b 01 	call	0x2b6	; 0x2b6 <piezo_init>
+	 piezoValue;
+ 432:	80 91 70 00 	lds	r24, 0x0070	; 0x800070 <__data_end>
+ 436:	90 91 71 00 	lds	r25, 0x0071	; 0x800071 <__data_end+0x1>
+ 43a:	a0 91 72 00 	lds	r26, 0x0072	; 0x800072 <__data_end+0x2>
+ 43e:	b0 91 73 00 	lds	r27, 0x0073	; 0x800073 <__data_end+0x3>
+	/* Replace with your application code */
+	PORTD|=(1<<PD0);
+ 442:	82 b3       	in	r24, 0x12	; 18
+ 444:	81 60       	ori	r24, 0x01	; 1
+ 446:	82 bb       	out	0x12, r24	; 18
+
+	while (1)
+	{
+		piezoValue = piezo_read(5);
+ 448:	85 e0       	ldi	r24, 0x05	; 5
+ 44a:	0e 94 60 01 	call	0x2c0	; 0x2c0 <piezo_read>
+ 44e:	bc 01       	movw	r22, r24
+ 450:	80 e0       	ldi	r24, 0x00	; 0
+ 452:	90 e0       	ldi	r25, 0x00	; 0
+ 454:	0e 94 f9 03 	call	0x7f2	; 0x7f2 <__floatunsisf>
+ 458:	60 93 70 00 	sts	0x0070, r22	; 0x800070 <__data_end>
+ 45c:	70 93 71 00 	sts	0x0071, r23	; 0x800071 <__data_end+0x1>
+ 460:	80 93 72 00 	sts	0x0072, r24	; 0x800072 <__data_end+0x2>
+ 464:	90 93 73 00 	sts	0x0073, r25	; 0x800073 <__data_end+0x3>
+		if (piezoValue>0)
+ 468:	60 91 70 00 	lds	r22, 0x0070	; 0x800070 <__data_end>
+ 46c:	70 91 71 00 	lds	r23, 0x0071	; 0x800071 <__data_end+0x1>
+ 470:	80 91 72 00 	lds	r24, 0x0072	; 0x800072 <__data_end+0x2>
+ 474:	90 91 73 00 	lds	r25, 0x0073	; 0x800073 <__data_end+0x3>
+ 478:	20 e0       	ldi	r18, 0x00	; 0
+ 47a:	30 e0       	ldi	r19, 0x00	; 0
+ 47c:	a9 01       	movw	r20, r18
+ 47e:	0e 94 36 04 	call	0x86c	; 0x86c <__gesf2>
+ 482:	18 16       	cp	r1, r24
+ 484:	24 f4       	brge	.+8      	; 0x48e <piezo4+0x66>
+		{
+			PORTD&=~(1<<PD0);
+ 486:	82 b3       	in	r24, 0x12	; 18
+ 488:	8e 7f       	andi	r24, 0xFE	; 254
+ 48a:	82 bb       	out	0x12, r24	; 18
+			break;
+			}else{
+			PORTD|=(1<<PD0);
+		}
+	}
+}
+ 48c:	08 95       	ret
+		if (piezoValue>0)
+		{
+			PORTD&=~(1<<PD0);
+			break;
+			}else{
+			PORTD|=(1<<PD0);
+ 48e:	82 b3       	in	r24, 0x12	; 18
+ 490:	81 60       	ori	r24, 0x01	; 1
+ 492:	82 bb       	out	0x12, r24	; 18
+		}
+	}
+ 494:	d9 cf       	rjmp	.-78     	; 0x448 <piezo4+0x20>
+
+00000496 <piezo5>:
+}
+void piezo5()
+{   DDRD|=(1<<PD1);
+ 496:	81 b3       	in	r24, 0x11	; 17
+ 498:	82 60       	ori	r24, 0x02	; 2
+ 49a:	81 bb       	out	0x11, r24	; 17
+	piezo_init();
+ 49c:	0e 94 5b 01 	call	0x2b6	; 0x2b6 <piezo_init>
+	 piezoValue;
+ 4a0:	80 91 70 00 	lds	r24, 0x0070	; 0x800070 <__data_end>
+ 4a4:	90 91 71 00 	lds	r25, 0x0071	; 0x800071 <__data_end+0x1>
+ 4a8:	a0 91 72 00 	lds	r26, 0x0072	; 0x800072 <__data_end+0x2>
+ 4ac:	b0 91 73 00 	lds	r27, 0x0073	; 0x800073 <__data_end+0x3>
+	/* Replace with your application code */
+	PORTD|=(1<<PD1);
+ 4b0:	82 b3       	in	r24, 0x12	; 18
+ 4b2:	82 60       	ori	r24, 0x02	; 2
+ 4b4:	82 bb       	out	0x12, r24	; 18
+
+	while (1)
+	{
+		piezoValue = piezo_read(6);
+ 4b6:	86 e0       	ldi	r24, 0x06	; 6
+ 4b8:	0e 94 60 01 	call	0x2c0	; 0x2c0 <piezo_read>
+ 4bc:	bc 01       	movw	r22, r24
+ 4be:	80 e0       	ldi	r24, 0x00	; 0
+ 4c0:	90 e0       	ldi	r25, 0x00	; 0
+ 4c2:	0e 94 f9 03 	call	0x7f2	; 0x7f2 <__floatunsisf>
+ 4c6:	60 93 70 00 	sts	0x0070, r22	; 0x800070 <__data_end>
+ 4ca:	70 93 71 00 	sts	0x0071, r23	; 0x800071 <__data_end+0x1>
+ 4ce:	80 93 72 00 	sts	0x0072, r24	; 0x800072 <__data_end+0x2>
+ 4d2:	90 93 73 00 	sts	0x0073, r25	; 0x800073 <__data_end+0x3>
+		if (piezoValue>0)
+ 4d6:	60 91 70 00 	lds	r22, 0x0070	; 0x800070 <__data_end>
+ 4da:	70 91 71 00 	lds	r23, 0x0071	; 0x800071 <__data_end+0x1>
+ 4de:	80 91 72 00 	lds	r24, 0x0072	; 0x800072 <__data_end+0x2>
+ 4e2:	90 91 73 00 	lds	r25, 0x0073	; 0x800073 <__data_end+0x3>
+ 4e6:	20 e0       	ldi	r18, 0x00	; 0
+ 4e8:	30 e0       	ldi	r19, 0x00	; 0
+ 4ea:	a9 01       	movw	r20, r18
+ 4ec:	0e 94 36 04 	call	0x86c	; 0x86c <__gesf2>
+ 4f0:	18 16       	cp	r1, r24
+ 4f2:	24 f4       	brge	.+8      	; 0x4fc <piezo5+0x66>
+		{
+			PORTD&=~(1<<PD1);
+ 4f4:	82 b3       	in	r24, 0x12	; 18
+ 4f6:	8d 7f       	andi	r24, 0xFD	; 253
+ 4f8:	82 bb       	out	0x12, r24	; 18
+			break;
+			}else{
+			PORTD|=(1<<PD1);
+		}
+	}
+}
+ 4fa:	08 95       	ret
+		if (piezoValue>0)
+		{
+			PORTD&=~(1<<PD1);
+			break;
+			}else{
+			PORTD|=(1<<PD1);
+ 4fc:	82 b3       	in	r24, 0x12	; 18
+ 4fe:	82 60       	ori	r24, 0x02	; 2
+ 500:	82 bb       	out	0x12, r24	; 18
+		}
+	}
+ 502:	d9 cf       	rjmp	.-78     	; 0x4b6 <piezo5+0x20>
+
+00000504 <piezo6>:
+}
+void piezo6()
+{   DDRD|=(1<<PD2);
+ 504:	81 b3       	in	r24, 0x11	; 17
+ 506:	84 60       	ori	r24, 0x04	; 4
+ 508:	81 bb       	out	0x11, r24	; 17
+	piezo_init();
+ 50a:	0e 94 5b 01 	call	0x2b6	; 0x2b6 <piezo_init>
+	 piezoValue;
+ 50e:	80 91 70 00 	lds	r24, 0x0070	; 0x800070 <__data_end>
+ 512:	90 91 71 00 	lds	r25, 0x0071	; 0x800071 <__data_end+0x1>
+ 516:	a0 91 72 00 	lds	r26, 0x0072	; 0x800072 <__data_end+0x2>
+ 51a:	b0 91 73 00 	lds	r27, 0x0073	; 0x800073 <__data_end+0x3>
+	/* Replace with your application code */
+	PORTD|=(1<<PD2);
+ 51e:	82 b3       	in	r24, 0x12	; 18
+ 520:	84 60       	ori	r24, 0x04	; 4
+ 522:	82 bb       	out	0x12, r24	; 18
+
+	while (1)
+	{
+		piezoValue = piezo_read(7);
+ 524:	87 e0       	ldi	r24, 0x07	; 7
+ 526:	0e 94 60 01 	call	0x2c0	; 0x2c0 <piezo_read>
+ 52a:	bc 01       	movw	r22, r24
+ 52c:	80 e0       	ldi	r24, 0x00	; 0
+ 52e:	90 e0       	ldi	r25, 0x00	; 0
+ 530:	0e 94 f9 03 	call	0x7f2	; 0x7f2 <__floatunsisf>
+ 534:	60 93 70 00 	sts	0x0070, r22	; 0x800070 <__data_end>
+ 538:	70 93 71 00 	sts	0x0071, r23	; 0x800071 <__data_end+0x1>
+ 53c:	80 93 72 00 	sts	0x0072, r24	; 0x800072 <__data_end+0x2>
+ 540:	90 93 73 00 	sts	0x0073, r25	; 0x800073 <__data_end+0x3>
+		if (piezoValue>0)
+ 544:	60 91 70 00 	lds	r22, 0x0070	; 0x800070 <__data_end>
+ 548:	70 91 71 00 	lds	r23, 0x0071	; 0x800071 <__data_end+0x1>
+ 54c:	80 91 72 00 	lds	r24, 0x0072	; 0x800072 <__data_end+0x2>
+ 550:	90 91 73 00 	lds	r25, 0x0073	; 0x800073 <__data_end+0x3>
+ 554:	20 e0       	ldi	r18, 0x00	; 0
+ 556:	30 e0       	ldi	r19, 0x00	; 0
+ 558:	a9 01       	movw	r20, r18
+ 55a:	0e 94 36 04 	call	0x86c	; 0x86c <__gesf2>
+ 55e:	18 16       	cp	r1, r24
+ 560:	24 f4       	brge	.+8      	; 0x56a <piezo6+0x66>
+		{
+			PORTD&=~(1<<PD2);
+ 562:	82 b3       	in	r24, 0x12	; 18
+ 564:	8b 7f       	andi	r24, 0xFB	; 251
+ 566:	82 bb       	out	0x12, r24	; 18
+			break;
+			}else{
+			PORTD|=(1<<PD2);
+		}
+	}
+}
+ 568:	08 95       	ret
+		if (piezoValue>0)
+		{
+			PORTD&=~(1<<PD2);
+			break;
+			}else{
+			PORTD|=(1<<PD2);
+ 56a:	82 b3       	in	r24, 0x12	; 18
+ 56c:	84 60       	ori	r24, 0x04	; 4
+ 56e:	82 bb       	out	0x12, r24	; 18
+		}
+	}
+ 570:	d9 cf       	rjmp	.-78     	; 0x524 <piezo6+0x20>
+
+00000572 <left_horizontal_arm>:
+ 572:	87 b3       	in	r24, 0x17	; 23
+ 574:	88 60       	ori	r24, 0x08	; 8
+ 576:	87 bb       	out	0x17, r24	; 23
+ 578:	18 ba       	out	0x18, r1	; 24
+ 57a:	88 b3       	in	r24, 0x18	; 24
+ 57c:	88 60       	ori	r24, 0x08	; 8
+ 57e:	88 bb       	out	0x18, r24	; 24
+ 580:	8f e9       	ldi	r24, 0x9F	; 159
+ 582:	9f e0       	ldi	r25, 0x0F	; 15
+ 584:	01 97       	sbiw	r24, 0x01	; 1
+ 586:	f1 f7       	brne	.-4      	; 0x584 <left_horizontal_arm+0x12>
+ 588:	00 c0       	rjmp	.+0      	; 0x58a <left_horizontal_arm+0x18>
+ 58a:	00 00       	nop
+ 58c:	88 b3       	in	r24, 0x18	; 24
+ 58e:	18 ba       	out	0x18, r1	; 24
+ 590:	9f ef       	ldi	r25, 0xFF	; 255
+ 592:	29 e6       	ldi	r18, 0x69	; 105
+ 594:	88 e1       	ldi	r24, 0x18	; 24
+ 596:	91 50       	subi	r25, 0x01	; 1
+ 598:	20 40       	sbci	r18, 0x00	; 0
+ 59a:	80 40       	sbci	r24, 0x00	; 0
+ 59c:	e1 f7       	brne	.-8      	; 0x596 <left_horizontal_arm+0x24>
+ 59e:	00 c0       	rjmp	.+0      	; 0x5a0 <left_horizontal_arm+0x2e>
+ 5a0:	00 00       	nop
+ 5a2:	88 b3       	in	r24, 0x18	; 24
+ 5a4:	88 60       	ori	r24, 0x08	; 8
+ 5a6:	88 bb       	out	0x18, r24	; 24
+ 5a8:	8f e6       	ldi	r24, 0x6F	; 111
+ 5aa:	97 e1       	ldi	r25, 0x17	; 23
+ 5ac:	01 97       	sbiw	r24, 0x01	; 1
+ 5ae:	f1 f7       	brne	.-4      	; 0x5ac <left_horizontal_arm+0x3a>
+ 5b0:	00 c0       	rjmp	.+0      	; 0x5b2 <left_horizontal_arm+0x40>
+ 5b2:	00 00       	nop
+ 5b4:	88 b3       	in	r24, 0x18	; 24
+ 5b6:	18 ba       	out	0x18, r1	; 24
+ 5b8:	9f ef       	ldi	r25, 0xFF	; 255
+ 5ba:	29 e6       	ldi	r18, 0x69	; 105
+ 5bc:	88 e1       	ldi	r24, 0x18	; 24
+ 5be:	91 50       	subi	r25, 0x01	; 1
+ 5c0:	20 40       	sbci	r18, 0x00	; 0
+ 5c2:	80 40       	sbci	r24, 0x00	; 0
+ 5c4:	e1 f7       	brne	.-8      	; 0x5be <left_horizontal_arm+0x4c>
+ 5c6:	00 c0       	rjmp	.+0      	; 0x5c8 <left_horizontal_arm+0x56>
+ 5c8:	00 00       	nop
+ 5ca:	08 95       	ret
+
+000005cc <right_horizontal_arm>:
+
+
+}
+void right_horizontal_arm(){
+	//Rotate Motor 3 to 0 degree
+PORTD |= (1<<PD5);
+ 5cc:	82 b3       	in	r24, 0x12	; 18
+ 5ce:	80 62       	ori	r24, 0x20	; 32
+ 5d0:	82 bb       	out	0x12, r24	; 18
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 5d2:	8f e9       	ldi	r24, 0x9F	; 159
+ 5d4:	9f e0       	ldi	r25, 0x0F	; 15
+ 5d6:	01 97       	sbiw	r24, 0x01	; 1
+ 5d8:	f1 f7       	brne	.-4      	; 0x5d6 <right_horizontal_arm+0xa>
+ 5da:	00 c0       	rjmp	.+0      	; 0x5dc <right_horizontal_arm+0x10>
+ 5dc:	00 00       	nop
+	_delay_us(1000);
+PORTD &= !(1<<PD5);
+ 5de:	82 b3       	in	r24, 0x12	; 18
+ 5e0:	12 ba       	out	0x12, r1	; 18
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 5e2:	9f ef       	ldi	r25, 0xFF	; 255
+ 5e4:	29 e6       	ldi	r18, 0x69	; 105
+ 5e6:	88 e1       	ldi	r24, 0x18	; 24
+ 5e8:	91 50       	subi	r25, 0x01	; 1
+ 5ea:	20 40       	sbci	r18, 0x00	; 0
+ 5ec:	80 40       	sbci	r24, 0x00	; 0
+ 5ee:	e1 f7       	brne	.-8      	; 0x5e8 <right_horizontal_arm+0x1c>
+ 5f0:	00 c0       	rjmp	.+0      	; 0x5f2 <right_horizontal_arm+0x26>
+ 5f2:	00 00       	nop
+
+	_delay_ms(500);
+
+	//Rotate Motor 3 to 90 degree
+PORTD |= (1<<PD5);
+ 5f4:	82 b3       	in	r24, 0x12	; 18
+ 5f6:	80 62       	ori	r24, 0x20	; 32
+ 5f8:	82 bb       	out	0x12, r24	; 18
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 5fa:	8f e6       	ldi	r24, 0x6F	; 111
+ 5fc:	97 e1       	ldi	r25, 0x17	; 23
+ 5fe:	01 97       	sbiw	r24, 0x01	; 1
+ 600:	f1 f7       	brne	.-4      	; 0x5fe <right_horizontal_arm+0x32>
+ 602:	00 c0       	rjmp	.+0      	; 0x604 <right_horizontal_arm+0x38>
+ 604:	00 00       	nop
+	_delay_us(1500);
+PORTD &= !(1<<PD5);
+ 606:	82 b3       	in	r24, 0x12	; 18
+ 608:	12 ba       	out	0x12, r1	; 18
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 60a:	9f ef       	ldi	r25, 0xFF	; 255
+ 60c:	29 e6       	ldi	r18, 0x69	; 105
+ 60e:	88 e1       	ldi	r24, 0x18	; 24
+ 610:	91 50       	subi	r25, 0x01	; 1
+ 612:	20 40       	sbci	r18, 0x00	; 0
+ 614:	80 40       	sbci	r24, 0x00	; 0
+ 616:	e1 f7       	brne	.-8      	; 0x610 <right_horizontal_arm+0x44>
+ 618:	00 c0       	rjmp	.+0      	; 0x61a <right_horizontal_arm+0x4e>
+ 61a:	00 00       	nop
+ 61c:	08 95       	ret
+
+0000061e <lft_vertical_arm>:
+}
+void lft_vertical_arm()
+{
+	
+	//Rotate Motor 4 to 0 degree
+PORTD |= (1<<PD7);
+ 61e:	82 b3       	in	r24, 0x12	; 18
+ 620:	80 68       	ori	r24, 0x80	; 128
+ 622:	82 bb       	out	0x12, r24	; 18
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 624:	8f e9       	ldi	r24, 0x9F	; 159
+ 626:	9f e0       	ldi	r25, 0x0F	; 15
+ 628:	01 97       	sbiw	r24, 0x01	; 1
+ 62a:	f1 f7       	brne	.-4      	; 0x628 <lft_vertical_arm+0xa>
+ 62c:	00 c0       	rjmp	.+0      	; 0x62e <lft_vertical_arm+0x10>
+ 62e:	00 00       	nop
+	_delay_us(1000);
+PORTD &= !(1<<PD7);
+ 630:	82 b3       	in	r24, 0x12	; 18
+ 632:	12 ba       	out	0x12, r1	; 18
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 634:	9f ef       	ldi	r25, 0xFF	; 255
+ 636:	29 e6       	ldi	r18, 0x69	; 105
+ 638:	88 e1       	ldi	r24, 0x18	; 24
+ 63a:	91 50       	subi	r25, 0x01	; 1
+ 63c:	20 40       	sbci	r18, 0x00	; 0
+ 63e:	80 40       	sbci	r24, 0x00	; 0
+ 640:	e1 f7       	brne	.-8      	; 0x63a <lft_vertical_arm+0x1c>
+ 642:	00 c0       	rjmp	.+0      	; 0x644 <lft_vertical_arm+0x26>
+ 644:	00 00       	nop
+	_delay_ms(500);
+
+	//Rotate Motor 4 to 90 degree
+PORTD |= (1<<PD7);
+ 646:	82 b3       	in	r24, 0x12	; 18
+ 648:	80 68       	ori	r24, 0x80	; 128
+ 64a:	82 bb       	out	0x12, r24	; 18
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 64c:	8f e6       	ldi	r24, 0x6F	; 111
+ 64e:	97 e1       	ldi	r25, 0x17	; 23
+ 650:	01 97       	sbiw	r24, 0x01	; 1
+ 652:	f1 f7       	brne	.-4      	; 0x650 <lft_vertical_arm+0x32>
+ 654:	00 c0       	rjmp	.+0      	; 0x656 <lft_vertical_arm+0x38>
+ 656:	00 00       	nop
+	_delay_us(1500);
+PORTD &= !(1<<PD7);
+ 658:	82 b3       	in	r24, 0x12	; 18
+ 65a:	12 ba       	out	0x12, r1	; 18
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 65c:	9f ef       	ldi	r25, 0xFF	; 255
+ 65e:	29 e6       	ldi	r18, 0x69	; 105
+ 660:	88 e1       	ldi	r24, 0x18	; 24
+ 662:	91 50       	subi	r25, 0x01	; 1
+ 664:	20 40       	sbci	r18, 0x00	; 0
+ 666:	80 40       	sbci	r24, 0x00	; 0
+ 668:	e1 f7       	brne	.-8      	; 0x662 <lft_vertical_arm+0x44>
+ 66a:	00 c0       	rjmp	.+0      	; 0x66c <lft_vertical_arm+0x4e>
+ 66c:	00 00       	nop
+ 66e:	08 95       	ret
+
+00000670 <stepper_motor_clockwise>:
+ #include "stepper.h"
+ void stepper_motor_clockwise()
+ {
+	 /* Rotate Stepper Motor clockwise with Half step sequence */
+
+          PORTC = 0x05;
+ 670:	85 e0       	ldi	r24, 0x05	; 5
+ 672:	85 bb       	out	0x15, r24	; 21
+ 674:	2f ef       	ldi	r18, 0xFF	; 255
+ 676:	35 ea       	ldi	r19, 0xA5	; 165
+ 678:	9e e0       	ldi	r25, 0x0E	; 14
+ 67a:	21 50       	subi	r18, 0x01	; 1
+ 67c:	30 40       	sbci	r19, 0x00	; 0
+ 67e:	90 40       	sbci	r25, 0x00	; 0
+ 680:	e1 f7       	brne	.-8      	; 0x67a <stepper_motor_clockwise+0xa>
+ 682:	00 c0       	rjmp	.+0      	; 0x684 <stepper_motor_clockwise+0x14>
+ 684:	00 00       	nop
+          _delay_ms(300);
+          PORTC = 0x06;
+ 686:	96 e0       	ldi	r25, 0x06	; 6
+ 688:	95 bb       	out	0x15, r25	; 21
+ 68a:	2f ef       	ldi	r18, 0xFF	; 255
+ 68c:	35 ea       	ldi	r19, 0xA5	; 165
+ 68e:	9e e0       	ldi	r25, 0x0E	; 14
+ 690:	21 50       	subi	r18, 0x01	; 1
+ 692:	30 40       	sbci	r19, 0x00	; 0
+ 694:	90 40       	sbci	r25, 0x00	; 0
+ 696:	e1 f7       	brne	.-8      	; 0x690 <stepper_motor_clockwise+0x20>
+ 698:	00 c0       	rjmp	.+0      	; 0x69a <stepper_motor_clockwise+0x2a>
+ 69a:	00 00       	nop
+          _delay_ms(300);
+          PORTC = 0x0A;
+ 69c:	9a e0       	ldi	r25, 0x0A	; 10
+ 69e:	95 bb       	out	0x15, r25	; 21
+ 6a0:	2f ef       	ldi	r18, 0xFF	; 255
+ 6a2:	35 ea       	ldi	r19, 0xA5	; 165
+ 6a4:	9e e0       	ldi	r25, 0x0E	; 14
+ 6a6:	21 50       	subi	r18, 0x01	; 1
+ 6a8:	30 40       	sbci	r19, 0x00	; 0
+ 6aa:	90 40       	sbci	r25, 0x00	; 0
+ 6ac:	e1 f7       	brne	.-8      	; 0x6a6 <stepper_motor_clockwise+0x36>
+ 6ae:	00 c0       	rjmp	.+0      	; 0x6b0 <stepper_motor_clockwise+0x40>
+ 6b0:	00 00       	nop
+          _delay_ms(300);
+          PORTC = 0x09;
+ 6b2:	99 e0       	ldi	r25, 0x09	; 9
+ 6b4:	95 bb       	out	0x15, r25	; 21
+ 6b6:	2f ef       	ldi	r18, 0xFF	; 255
+ 6b8:	35 ea       	ldi	r19, 0xA5	; 165
+ 6ba:	9e e0       	ldi	r25, 0x0E	; 14
+ 6bc:	21 50       	subi	r18, 0x01	; 1
+ 6be:	30 40       	sbci	r19, 0x00	; 0
+ 6c0:	90 40       	sbci	r25, 0x00	; 0
+ 6c2:	e1 f7       	brne	.-8      	; 0x6bc <stepper_motor_clockwise+0x4c>
+ 6c4:	00 c0       	rjmp	.+0      	; 0x6c6 <stepper_motor_clockwise+0x56>
+ 6c6:	00 00       	nop
+          _delay_ms(300);
+		   PORTC = 0x05;
+ 6c8:	85 bb       	out	0x15, r24	; 21
+ 6ca:	2f ef       	ldi	r18, 0xFF	; 255
+ 6cc:	35 ea       	ldi	r19, 0xA5	; 165
+ 6ce:	8e e0       	ldi	r24, 0x0E	; 14
+ 6d0:	21 50       	subi	r18, 0x01	; 1
+ 6d2:	30 40       	sbci	r19, 0x00	; 0
+ 6d4:	80 40       	sbci	r24, 0x00	; 0
+ 6d6:	e1 f7       	brne	.-8      	; 0x6d0 <stepper_motor_clockwise+0x60>
+ 6d8:	00 c0       	rjmp	.+0      	; 0x6da <stepper_motor_clockwise+0x6a>
+ 6da:	00 00       	nop
+ 6dc:	08 95       	ret
+
+000006de <stepper_motor_anticlockwise>:
+	 
+ }
+ void stepper_motor_anticlockwise()
+ {
+	 /* Rotate Stepper Motor Anticlockwise with half Full step sequence */
+	 PORTC = 0x05;
+ 6de:	85 e0       	ldi	r24, 0x05	; 5
+ 6e0:	85 bb       	out	0x15, r24	; 21
+ 6e2:	2f ef       	ldi	r18, 0xFF	; 255
+ 6e4:	35 ea       	ldi	r19, 0xA5	; 165
+ 6e6:	9e e0       	ldi	r25, 0x0E	; 14
+ 6e8:	21 50       	subi	r18, 0x01	; 1
+ 6ea:	30 40       	sbci	r19, 0x00	; 0
+ 6ec:	90 40       	sbci	r25, 0x00	; 0
+ 6ee:	e1 f7       	brne	.-8      	; 0x6e8 <stepper_motor_anticlockwise+0xa>
+ 6f0:	00 c0       	rjmp	.+0      	; 0x6f2 <stepper_motor_anticlockwise+0x14>
+ 6f2:	00 00       	nop
+	 _delay_ms(300);
+	 PORTC = 0x09;
+ 6f4:	99 e0       	ldi	r25, 0x09	; 9
+ 6f6:	95 bb       	out	0x15, r25	; 21
+ 6f8:	2f ef       	ldi	r18, 0xFF	; 255
+ 6fa:	35 ea       	ldi	r19, 0xA5	; 165
+ 6fc:	9e e0       	ldi	r25, 0x0E	; 14
+ 6fe:	21 50       	subi	r18, 0x01	; 1
+ 700:	30 40       	sbci	r19, 0x00	; 0
+ 702:	90 40       	sbci	r25, 0x00	; 0
+ 704:	e1 f7       	brne	.-8      	; 0x6fe <stepper_motor_anticlockwise+0x20>
+ 706:	00 c0       	rjmp	.+0      	; 0x708 <stepper_motor_anticlockwise+0x2a>
+ 708:	00 00       	nop
+	 _delay_ms(300);
+	 PORTC = 0x0A;
+ 70a:	9a e0       	ldi	r25, 0x0A	; 10
+ 70c:	95 bb       	out	0x15, r25	; 21
+ 70e:	2f ef       	ldi	r18, 0xFF	; 255
+ 710:	35 ea       	ldi	r19, 0xA5	; 165
+ 712:	9e e0       	ldi	r25, 0x0E	; 14
+ 714:	21 50       	subi	r18, 0x01	; 1
+ 716:	30 40       	sbci	r19, 0x00	; 0
+ 718:	90 40       	sbci	r25, 0x00	; 0
+ 71a:	e1 f7       	brne	.-8      	; 0x714 <stepper_motor_anticlockwise+0x36>
+ 71c:	00 c0       	rjmp	.+0      	; 0x71e <stepper_motor_anticlockwise+0x40>
+ 71e:	00 00       	nop
+	 _delay_ms(300);
+	 PORTC = 0x06;
+ 720:	96 e0       	ldi	r25, 0x06	; 6
+ 722:	95 bb       	out	0x15, r25	; 21
+ 724:	2f ef       	ldi	r18, 0xFF	; 255
+ 726:	35 ea       	ldi	r19, 0xA5	; 165
+ 728:	9e e0       	ldi	r25, 0x0E	; 14
+ 72a:	21 50       	subi	r18, 0x01	; 1
+ 72c:	30 40       	sbci	r19, 0x00	; 0
+ 72e:	90 40       	sbci	r25, 0x00	; 0
+ 730:	e1 f7       	brne	.-8      	; 0x72a <stepper_motor_anticlockwise+0x4c>
+ 732:	00 c0       	rjmp	.+0      	; 0x734 <stepper_motor_anticlockwise+0x56>
+ 734:	00 00       	nop
+	 _delay_ms(300);
+	 PORTC = 0x05;
+ 736:	85 bb       	out	0x15, r24	; 21
+ 738:	2f ef       	ldi	r18, 0xFF	; 255
+ 73a:	35 ea       	ldi	r19, 0xA5	; 165
+ 73c:	8e e0       	ldi	r24, 0x0E	; 14
+ 73e:	21 50       	subi	r18, 0x01	; 1
+ 740:	30 40       	sbci	r19, 0x00	; 0
+ 742:	80 40       	sbci	r24, 0x00	; 0
+ 744:	e1 f7       	brne	.-8      	; 0x73e <stepper_motor_anticlockwise+0x60>
+ 746:	00 c0       	rjmp	.+0      	; 0x748 <stepper_motor_anticlockwise+0x6a>
+ 748:	00 00       	nop
+ 74a:	08 95       	ret
+
+0000074c <__vector_9>:
+ */ 
+//import ultrasonic header
+#include "ultrasonic.h"
+int TimerOverflow = 0;
+ISR(TIMER1_OVF_vect)
+{
+ 74c:	1f 92       	push	r1
+ 74e:	0f 92       	push	r0
+ 750:	0f b6       	in	r0, 0x3f	; 63
+ 752:	0f 92       	push	r0
+ 754:	11 24       	eor	r1, r1
+ 756:	8f 93       	push	r24
+ 758:	9f 93       	push	r25
+	TimerOverflow++;	/* Increment Timer Overflow count */
+ 75a:	80 91 74 00 	lds	r24, 0x0074	; 0x800074 <TimerOverflow>
+ 75e:	90 91 75 00 	lds	r25, 0x0075	; 0x800075 <TimerOverflow+0x1>
+ 762:	01 96       	adiw	r24, 0x01	; 1
+ 764:	90 93 75 00 	sts	0x0075, r25	; 0x800075 <TimerOverflow+0x1>
+ 768:	80 93 74 00 	sts	0x0074, r24	; 0x800074 <TimerOverflow>
+}
+ 76c:	9f 91       	pop	r25
+ 76e:	8f 91       	pop	r24
+ 770:	0f 90       	pop	r0
+ 772:	0f be       	out	0x3f, r0	; 63
+ 774:	0f 90       	pop	r0
+ 776:	1f 90       	pop	r1
+ 778:	18 95       	reti
+
+0000077a <ultrasonic>:
+
+
+int ultrasonic()
+{
+	long count;
+	sei();			/* Enable global interrupt */
+ 77a:	78 94       	sei
+	TIMSK = (1 << TOIE1);	/* Enable Timer1 overflow interrupts */
+ 77c:	94 e0       	ldi	r25, 0x04	; 4
+ 77e:	99 bf       	out	0x39, r25	; 57
+	TCCR1A = 0;		/* Set all bit to zero Normal operation */
+ 780:	1f bc       	out	0x2f, r1	; 47
+	/* Give 10us trigger pulse on trig. pin to HC-SR04 */
+	int dist;
+	PORTA |= (1 << Trigger_pin);
+ 782:	8b b3       	in	r24, 0x1b	; 27
+ 784:	81 60       	ori	r24, 0x01	; 1
+ 786:	8b bb       	out	0x1b, r24	; 27
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 788:	80 e5       	ldi	r24, 0x50	; 80
+ 78a:	8a 95       	dec	r24
+ 78c:	f1 f7       	brne	.-4      	; 0x78a <ultrasonic+0x10>
+	_delay_us(15);
+	PORTA &= (~(1 << Trigger_pin));
+ 78e:	8b b3       	in	r24, 0x1b	; 27
+ 790:	8e 7f       	andi	r24, 0xFE	; 254
+ 792:	8b bb       	out	0x1b, r24	; 27
+	
+	TCNT1 = 0;	/* Clear Timer counter */
+ 794:	1d bc       	out	0x2d, r1	; 45
+ 796:	1c bc       	out	0x2c, r1	; 44
+	TCCR1B = 0x41;	/* Capture on rising edge, No prescaler*/
+ 798:	81 e4       	ldi	r24, 0x41	; 65
+ 79a:	8e bd       	out	0x2e, r24	; 46
+	TIFR = 1<<ICF1;	/* Clear ICP flag (Input Capture flag) */
+ 79c:	80 e2       	ldi	r24, 0x20	; 32
+ 79e:	88 bf       	out	0x38, r24	; 56
+	TIFR = 1<<TOV1;	/* Clear Timer Overflow flag */
+ 7a0:	98 bf       	out	0x38, r25	; 56
+
+	/*Calculate width of Echo by Input Capture (ICP) */
+	TimerOverflow = 0;/* Clear Timer overflow count */
+ 7a2:	10 92 75 00 	sts	0x0075, r1	; 0x800075 <TimerOverflow+0x1>
+ 7a6:	10 92 74 00 	sts	0x0074, r1	; 0x800074 <TimerOverflow>
+	while ((TIFR & (1 << ICF1)) == 0);/* Wait for rising edge */
+ 7aa:	08 b6       	in	r0, 0x38	; 56
+ 7ac:	05 fe       	sbrs	r0, 5
+ 7ae:	fd cf       	rjmp	.-6      	; 0x7aa <ultrasonic+0x30>
+	TCNT1 = 0;	/* Clear Timer counter */
+ 7b0:	1d bc       	out	0x2d, r1	; 45
+ 7b2:	1c bc       	out	0x2c, r1	; 44
+	TCCR1B = 0x01;	/* Capture on falling edge, No prescaler */
+ 7b4:	81 e0       	ldi	r24, 0x01	; 1
+ 7b6:	8e bd       	out	0x2e, r24	; 46
+	TIFR = 1<<ICF1;	/* Clear ICP flag (Input Capture flag) */
+ 7b8:	80 e2       	ldi	r24, 0x20	; 32
+ 7ba:	88 bf       	out	0x38, r24	; 56
+	TIFR = 1<<TOV1;	/* Clear Timer Overflow flag */
+ 7bc:	84 e0       	ldi	r24, 0x04	; 4
+ 7be:	88 bf       	out	0x38, r24	; 56
+	
+
+	while ((TIFR & (1 << ICF1)) == 0);/* Wait for falling edge */
+ 7c0:	08 b6       	in	r0, 0x38	; 56
+ 7c2:	05 fe       	sbrs	r0, 5
+ 7c4:	fd cf       	rjmp	.-6      	; 0x7c0 <ultrasonic+0x46>
+	count = ICR1 + (65535 * TimerOverflow);	/* Take count */
+ 7c6:	46 b5       	in	r20, 0x26	; 38
+ 7c8:	57 b5       	in	r21, 0x27	; 39
+ 7ca:	a0 91 74 00 	lds	r26, 0x0074	; 0x800074 <TimerOverflow>
+ 7ce:	b0 91 75 00 	lds	r27, 0x0075	; 0x800075 <TimerOverflow+0x1>
+ 7d2:	2f ef       	ldi	r18, 0xFF	; 255
+ 7d4:	3f ef       	ldi	r19, 0xFF	; 255
+ 7d6:	0e 94 7e 04 	call	0x8fc	; 0x8fc <__usmulhisi3>
+ 7da:	64 0f       	add	r22, r20
+ 7dc:	75 1f       	adc	r23, r21
+ 7de:	81 1d       	adc	r24, r1
+ 7e0:	91 1d       	adc	r25, r1
+	/* 16MHz Timer freq, sound speed =343 m/s */
+	dist =(int)(count / 927);
+ 7e2:	2f e9       	ldi	r18, 0x9F	; 159
+ 7e4:	33 e0       	ldi	r19, 0x03	; 3
+ 7e6:	40 e0       	ldi	r20, 0x00	; 0
+ 7e8:	50 e0       	ldi	r21, 0x00	; 0
+ 7ea:	0e 94 5f 04 	call	0x8be	; 0x8be <__divmodsi4>
+	return dist;
+}
+ 7ee:	c9 01       	movw	r24, r18
+ 7f0:	08 95       	ret
+
+000007f2 <__floatunsisf>:
+ 7f2:	e8 94       	clt
+ 7f4:	09 c0       	rjmp	.+18     	; 0x808 <__DATA_REGION_LENGTH__+0x8>
+
+000007f6 <__floatsisf>:
+ 7f6:	97 fb       	bst	r25, 7
+ 7f8:	3e f4       	brtc	.+14     	; 0x808 <__DATA_REGION_LENGTH__+0x8>
+ 7fa:	90 95       	com	r25
+ 7fc:	80 95       	com	r24
+ 7fe:	70 95       	com	r23
+ 800:	61 95       	neg	r22
+ 802:	7f 4f       	sbci	r23, 0xFF	; 255
+ 804:	8f 4f       	sbci	r24, 0xFF	; 255
+ 806:	9f 4f       	sbci	r25, 0xFF	; 255
+ 808:	99 23       	and	r25, r25
+ 80a:	a9 f0       	breq	.+42     	; 0x836 <__DATA_REGION_LENGTH__+0x36>
+ 80c:	f9 2f       	mov	r31, r25
+ 80e:	96 e9       	ldi	r25, 0x96	; 150
+ 810:	bb 27       	eor	r27, r27
+ 812:	93 95       	inc	r25
+ 814:	f6 95       	lsr	r31
+ 816:	87 95       	ror	r24
+ 818:	77 95       	ror	r23
+ 81a:	67 95       	ror	r22
+ 81c:	b7 95       	ror	r27
+ 81e:	f1 11       	cpse	r31, r1
+ 820:	f8 cf       	rjmp	.-16     	; 0x812 <__DATA_REGION_LENGTH__+0x12>
+ 822:	fa f4       	brpl	.+62     	; 0x862 <__stack+0x3>
+ 824:	bb 0f       	add	r27, r27
+ 826:	11 f4       	brne	.+4      	; 0x82c <__DATA_REGION_LENGTH__+0x2c>
+ 828:	60 ff       	sbrs	r22, 0
+ 82a:	1b c0       	rjmp	.+54     	; 0x862 <__stack+0x3>
+ 82c:	6f 5f       	subi	r22, 0xFF	; 255
+ 82e:	7f 4f       	sbci	r23, 0xFF	; 255
+ 830:	8f 4f       	sbci	r24, 0xFF	; 255
+ 832:	9f 4f       	sbci	r25, 0xFF	; 255
+ 834:	16 c0       	rjmp	.+44     	; 0x862 <__stack+0x3>
+ 836:	88 23       	and	r24, r24
+ 838:	11 f0       	breq	.+4      	; 0x83e <__DATA_REGION_LENGTH__+0x3e>
+ 83a:	96 e9       	ldi	r25, 0x96	; 150
+ 83c:	11 c0       	rjmp	.+34     	; 0x860 <__stack+0x1>
+ 83e:	77 23       	and	r23, r23
+ 840:	21 f0       	breq	.+8      	; 0x84a <__DATA_REGION_LENGTH__+0x4a>
+ 842:	9e e8       	ldi	r25, 0x8E	; 142
+ 844:	87 2f       	mov	r24, r23
+ 846:	76 2f       	mov	r23, r22
+ 848:	05 c0       	rjmp	.+10     	; 0x854 <__DATA_REGION_LENGTH__+0x54>
+ 84a:	66 23       	and	r22, r22
+ 84c:	71 f0       	breq	.+28     	; 0x86a <__stack+0xb>
+ 84e:	96 e8       	ldi	r25, 0x86	; 134
+ 850:	86 2f       	mov	r24, r22
+ 852:	70 e0       	ldi	r23, 0x00	; 0
+ 854:	60 e0       	ldi	r22, 0x00	; 0
+ 856:	2a f0       	brmi	.+10     	; 0x862 <__stack+0x3>
+ 858:	9a 95       	dec	r25
+ 85a:	66 0f       	add	r22, r22
+ 85c:	77 1f       	adc	r23, r23
+ 85e:	88 1f       	adc	r24, r24
+ 860:	da f7       	brpl	.-10     	; 0x858 <__DATA_REGION_LENGTH__+0x58>
+ 862:	88 0f       	add	r24, r24
+ 864:	96 95       	lsr	r25
+ 866:	87 95       	ror	r24
+ 868:	97 f9       	bld	r25, 7
+ 86a:	08 95       	ret
+
+0000086c <__gesf2>:
+ 86c:	0e 94 3b 04 	call	0x876	; 0x876 <__fp_cmp>
+ 870:	08 f4       	brcc	.+2      	; 0x874 <__gesf2+0x8>
+ 872:	8f ef       	ldi	r24, 0xFF	; 255
+ 874:	08 95       	ret
+
+00000876 <__fp_cmp>:
+ 876:	99 0f       	add	r25, r25
+ 878:	00 08       	sbc	r0, r0
+ 87a:	55 0f       	add	r21, r21
+ 87c:	aa 0b       	sbc	r26, r26
+ 87e:	e0 e8       	ldi	r30, 0x80	; 128
+ 880:	fe ef       	ldi	r31, 0xFE	; 254
+ 882:	16 16       	cp	r1, r22
+ 884:	17 06       	cpc	r1, r23
+ 886:	e8 07       	cpc	r30, r24
+ 888:	f9 07       	cpc	r31, r25
+ 88a:	c0 f0       	brcs	.+48     	; 0x8bc <__fp_cmp+0x46>
+ 88c:	12 16       	cp	r1, r18
+ 88e:	13 06       	cpc	r1, r19
+ 890:	e4 07       	cpc	r30, r20
+ 892:	f5 07       	cpc	r31, r21
+ 894:	98 f0       	brcs	.+38     	; 0x8bc <__fp_cmp+0x46>
+ 896:	62 1b       	sub	r22, r18
+ 898:	73 0b       	sbc	r23, r19
+ 89a:	84 0b       	sbc	r24, r20
+ 89c:	95 0b       	sbc	r25, r21
+ 89e:	39 f4       	brne	.+14     	; 0x8ae <__fp_cmp+0x38>
+ 8a0:	0a 26       	eor	r0, r26
+ 8a2:	61 f0       	breq	.+24     	; 0x8bc <__fp_cmp+0x46>
+ 8a4:	23 2b       	or	r18, r19
+ 8a6:	24 2b       	or	r18, r20
+ 8a8:	25 2b       	or	r18, r21
+ 8aa:	21 f4       	brne	.+8      	; 0x8b4 <__fp_cmp+0x3e>
+ 8ac:	08 95       	ret
+ 8ae:	0a 26       	eor	r0, r26
+ 8b0:	09 f4       	brne	.+2      	; 0x8b4 <__fp_cmp+0x3e>
+ 8b2:	a1 40       	sbci	r26, 0x01	; 1
+ 8b4:	a6 95       	lsr	r26
+ 8b6:	8f ef       	ldi	r24, 0xFF	; 255
+ 8b8:	81 1d       	adc	r24, r1
+ 8ba:	81 1d       	adc	r24, r1
+ 8bc:	08 95       	ret
+
+000008be <__divmodsi4>:
+ 8be:	05 2e       	mov	r0, r21
+ 8c0:	97 fb       	bst	r25, 7
+ 8c2:	1e f4       	brtc	.+6      	; 0x8ca <__divmodsi4+0xc>
+ 8c4:	00 94       	com	r0
+ 8c6:	0e 94 76 04 	call	0x8ec	; 0x8ec <__negsi2>
+ 8ca:	57 fd       	sbrc	r21, 7
+ 8cc:	07 d0       	rcall	.+14     	; 0x8dc <__divmodsi4_neg2>
+ 8ce:	0e 94 85 04 	call	0x90a	; 0x90a <__udivmodsi4>
+ 8d2:	07 fc       	sbrc	r0, 7
+ 8d4:	03 d0       	rcall	.+6      	; 0x8dc <__divmodsi4_neg2>
+ 8d6:	4e f4       	brtc	.+18     	; 0x8ea <__divmodsi4_exit>
+ 8d8:	0c 94 76 04 	jmp	0x8ec	; 0x8ec <__negsi2>
+
+000008dc <__divmodsi4_neg2>:
+ 8dc:	50 95       	com	r21
+ 8de:	40 95       	com	r20
+ 8e0:	30 95       	com	r19
+ 8e2:	21 95       	neg	r18
+ 8e4:	3f 4f       	sbci	r19, 0xFF	; 255
+ 8e6:	4f 4f       	sbci	r20, 0xFF	; 255
+ 8e8:	5f 4f       	sbci	r21, 0xFF	; 255
+
+000008ea <__divmodsi4_exit>:
+ 8ea:	08 95       	ret
+
+000008ec <__negsi2>:
+ 8ec:	90 95       	com	r25
+ 8ee:	80 95       	com	r24
+ 8f0:	70 95       	com	r23
+ 8f2:	61 95       	neg	r22
+ 8f4:	7f 4f       	sbci	r23, 0xFF	; 255
+ 8f6:	8f 4f       	sbci	r24, 0xFF	; 255
+ 8f8:	9f 4f       	sbci	r25, 0xFF	; 255
+ 8fa:	08 95       	ret
+
+000008fc <__usmulhisi3>:
+ 8fc:	0e 94 a7 04 	call	0x94e	; 0x94e <__umulhisi3>
+
+00000900 <__usmulhisi3_tail>:
+ 900:	b7 ff       	sbrs	r27, 7
+ 902:	08 95       	ret
+ 904:	82 1b       	sub	r24, r18
+ 906:	93 0b       	sbc	r25, r19
+ 908:	08 95       	ret
+
+0000090a <__udivmodsi4>:
+ 90a:	a1 e2       	ldi	r26, 0x21	; 33
+ 90c:	1a 2e       	mov	r1, r26
+ 90e:	aa 1b       	sub	r26, r26
+ 910:	bb 1b       	sub	r27, r27
+ 912:	fd 01       	movw	r30, r26
+ 914:	0d c0       	rjmp	.+26     	; 0x930 <__udivmodsi4_ep>
+
+00000916 <__udivmodsi4_loop>:
+ 916:	aa 1f       	adc	r26, r26
+ 918:	bb 1f       	adc	r27, r27
+ 91a:	ee 1f       	adc	r30, r30
+ 91c:	ff 1f       	adc	r31, r31
+ 91e:	a2 17       	cp	r26, r18
+ 920:	b3 07       	cpc	r27, r19
+ 922:	e4 07       	cpc	r30, r20
+ 924:	f5 07       	cpc	r31, r21
+ 926:	20 f0       	brcs	.+8      	; 0x930 <__udivmodsi4_ep>
+ 928:	a2 1b       	sub	r26, r18
+ 92a:	b3 0b       	sbc	r27, r19
+ 92c:	e4 0b       	sbc	r30, r20
+ 92e:	f5 0b       	sbc	r31, r21
+
+00000930 <__udivmodsi4_ep>:
+ 930:	66 1f       	adc	r22, r22
+ 932:	77 1f       	adc	r23, r23
+ 934:	88 1f       	adc	r24, r24
+ 936:	99 1f       	adc	r25, r25
+ 938:	1a 94       	dec	r1
+ 93a:	69 f7       	brne	.-38     	; 0x916 <__udivmodsi4_loop>
+ 93c:	60 95       	com	r22
+ 93e:	70 95       	com	r23
+ 940:	80 95       	com	r24
+ 942:	90 95       	com	r25
+ 944:	9b 01       	movw	r18, r22
+ 946:	ac 01       	movw	r20, r24
+ 948:	bd 01       	movw	r22, r26
+ 94a:	cf 01       	movw	r24, r30
+ 94c:	08 95       	ret
+
+0000094e <__umulhisi3>:
+ 94e:	a2 9f       	mul	r26, r18
+ 950:	b0 01       	movw	r22, r0
+ 952:	b3 9f       	mul	r27, r19
+ 954:	c0 01       	movw	r24, r0
+ 956:	a3 9f       	mul	r26, r19
+ 958:	70 0d       	add	r23, r0
+ 95a:	81 1d       	adc	r24, r1
+ 95c:	11 24       	eor	r1, r1
+ 95e:	91 1d       	adc	r25, r1
+ 960:	b2 9f       	mul	r27, r18
+ 962:	70 0d       	add	r23, r0
+ 964:	81 1d       	adc	r24, r1
+ 966:	11 24       	eor	r1, r1
+ 968:	91 1d       	adc	r25, r1
+ 96a:	08 95       	ret
+
+0000096c <_exit>:
+ 96c:	f8 94       	cli
+
+0000096e <__stop_program>:
+ 96e:	ff cf       	rjmp	.-2      	; 0x96e <__stop_program>
